@@ -17,12 +17,15 @@
   ],
   "license": "BSD-2-Clause",
   "scripts": {
-    "cover": "--overwrite-- c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m tests/*.mjs && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "test": "npm run test:ava",
     "test:ava": "ava --timeout 2m tests/*.mjs",
+    "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m tests/*.mjs && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "docs": "documentation readme --section=API ./src/**/*.mjs",
     "lint": "npm run lint:docs",
     "lint:docs": "documentation lint ./src/**/*.mjs"
+  },
+  "dependencies": {
+    "content-entry": "^4.0.0"
   },
   "devDependencies": {
     "ava": "^4.0.1",
@@ -38,7 +41,10 @@
     "url": "https://github.com/arlac77/content-entry-transform/issues"
   },
   "homepage": "https://github.com/arlac77/content-entry-transform#readme",
-  "dependencies": {
-    "content-entry": "^4.0.0"
+  "template": {
+    "inheritFrom": [
+      "arlac77/template-arlac77-github",
+      "arlac77/template-esm-only"
+    ]
   }
 }
