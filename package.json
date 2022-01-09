@@ -5,6 +5,9 @@
     "access": "public"
   },
   "sideEffects": false,
+  "exports": {
+    ".": "./src/transform.mjs"
+  },
   "description": "transform content entries",
   "contributors": [
     {
@@ -14,18 +17,21 @@
   ],
   "license": "BSD-2-Clause",
   "scripts": {
-    "cover": "--overwrite-- c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m tests/*.mjs && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "test": "npm run test:ava",
     "test:ava": "ava --timeout 2m tests/*.mjs",
+    "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m tests/*.mjs && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "docs": "documentation readme --section=API ./src/**/*.mjs",
     "lint": "npm run lint:docs",
     "lint:docs": "documentation lint ./src/**/*.mjs"
   },
+  "dependencies": {
+    "content-entry": "^4.0.0"
+  },
   "devDependencies": {
-    "semantic-release": "^18.0.1",
-    "c8": "^7.11.0",
     "ava": "^4.0.1",
-    "documentation": "^13.2.5"
+    "c8": "^7.11.0",
+    "documentation": "^13.2.5",
+    "semantic-release": "^18.0.1"
   },
   "repository": {
     "type": "git",
@@ -34,5 +40,11 @@
   "bugs": {
     "url": "https://github.com/arlac77/content-entry-transform/issues"
   },
-  "homepage": "https://github.com/arlac77/content-entry-transform#readme"
+  "homepage": "https://github.com/arlac77/content-entry-transform#readme",
+  "template": {
+    "inheritFrom": [
+      "arlac77/template-arlac77-github",
+      "arlac77/template-esm-only"
+    ]
+  }
 }
