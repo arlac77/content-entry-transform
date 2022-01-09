@@ -1,4 +1,5 @@
 export * from "./properties-transformer.mjs";
+export * from "./matcher.mjs";
 
 /**
  * Apply transformers.
@@ -12,7 +13,7 @@ export async function* transform(source, transformers = [], onlyMatching) {
   for await (let entry of source) {
     let didMatch = false;
     for (const t of transformers) {
-      console.log(t.name, entry.name, t.match(entry));
+      //console.log(t.name, entry.name, t.match(entry));
       if (t.match(entry)) {
         didMatch = true;
         entry = await t.transform(entry);
