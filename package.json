@@ -5,6 +5,9 @@
     "access": "public"
   },
   "sideEffects": false,
+  "exports": {
+    ".": "./src/transform.mjs"
+  },
   "description": "transform content entries",
   "contributors": [
     {
@@ -22,10 +25,10 @@
     "lint:docs": "documentation lint ./src/**/*.mjs"
   },
   "devDependencies": {
-    "semantic-release": "^18.0.1",
-    "c8": "^7.11.0",
     "ava": "^4.0.1",
-    "documentation": "^13.2.5"
+    "c8": "^7.11.0",
+    "documentation": "^13.2.5",
+    "semantic-release": "^18.0.1"
   },
   "repository": {
     "type": "git",
@@ -34,5 +37,8 @@
   "bugs": {
     "url": "https://github.com/arlac77/content-entry-transform/issues"
   },
-  "homepage": "https://github.com/arlac77/content-entry-transform#readme"
+  "homepage": "https://github.com/arlac77/content-entry-transform#readme",
+  "dependencies": {
+    "content-entry": "^4.0.0"
+  }
 }
