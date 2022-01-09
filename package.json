@@ -1,0 +1,38 @@
+{
+  "name": "content-entry-transform",
+  "version": "0.0.0-semantic-release",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "description": "transform content entries",
+  "contributors": [
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
+  ],
+  "license": "BSD-2-Clause",
+  "scripts": {
+    "cover": "--overwrite-- c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m tests/*.mjs && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
+    "test": "npm run test:ava",
+    "test:ava": "ava --timeout 2m tests/*.mjs",
+    "docs": "documentation readme --section=API ./src/**/*.mjs",
+    "lint": "npm run lint:docs",
+    "lint:docs": "documentation lint ./src/**/*.mjs"
+  },
+  "devDependencies": {
+    "semantic-release": "^18.0.1",
+    "c8": "^7.11.0",
+    "ava": "^4.0.1",
+    "documentation": "^13.2.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arlac77/content-entry-transform.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arlac77/content-entry-transform/issues"
+  },
+  "homepage": "https://github.com/arlac77/content-entry-transform#readme"
+}
