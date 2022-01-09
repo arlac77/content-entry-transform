@@ -6,8 +6,8 @@
  * @return {Transformer}
  */
 export function createPropertiesTransformer(
-  propertyDefinitions,
   match,
+  propertyDefinitions,
   name = "property"
 ) {
   return {

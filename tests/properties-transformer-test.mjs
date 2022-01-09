@@ -4,8 +4,8 @@ import { createPropertiesTransformer } from "content-entry-transform";
 
 test("property transform", async t => {
   const pt = createPropertiesTransformer(
+	() => true,
     { mode: { value: 4711 } },
-    () => true,
     "matcherName"
   );
 
