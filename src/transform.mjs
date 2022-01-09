@@ -1,3 +1,5 @@
+export * from "./properties-transformer.mjs";
+
 /**
  * Apply transformers.
  * @param {AsyncIterator<ContentEntry>} source
