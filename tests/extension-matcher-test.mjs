@@ -7,4 +7,5 @@ test("nameExtensionMatcher", async t => {
 
   t.true(m(new ContentEntry("aName.txt")));
   t.false(m(new ContentEntry("aName.txt2")));
+  t.false(m(new ContentEntry("aNametxt")));
 });

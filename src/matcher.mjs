@@ -1,5 +1,9 @@
+
 export function nameExtensionMatcher(extensions)
 {
-  const r = RegExp(`(${extensions.join('|')})$`);
-  return (entry) => entry.name.match(r) ? true : false;
+  const s = `(${extensions.map(/\./,"\\.").join('|')})$`;
+  console.log("RE",s);
+
+  const r = new RegExp(s);
+  return (entry) => r.test(entry.name);
 }
