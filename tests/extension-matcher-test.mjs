@@ -9,3 +9,12 @@ test("nameExtensionMatcher", async t => {
   t.false(m(new ContentEntry("aName.txt2")));
   t.false(m(new ContentEntry("aNametxt")));
 });
+
+test("nameExtensionMatcher multiple", async t => {
+  const m = nameExtensionMatcher([".txt", ".json"]);
+
+  t.true(m(new ContentEntry("aName.txt")));
+  t.true(m(new ContentEntry("aName.json")));
+  t.false(m(new ContentEntry("aName.txt2")));
+  t.false(m(new ContentEntry("aNametxt")));
+});

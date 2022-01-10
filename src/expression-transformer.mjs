@@ -1,3 +1,5 @@
+import { nameExtensionMatcher } from "./matcher.mjs";
+
 export function createPropertiesInterceptor(properties) {
   return async function* transformer(expression, remainder, source, cb) {
     const value = properties[expression];
@@ -6,12 +8,19 @@ export function createPropertiesInterceptor(properties) {
 }
 
 export function createExpressionTransformer(
+  match = nameExtensionMatcher([
+    ".conf",
+    ".json",
+    ".html",
+    ".txt",
+    ".service",
+    ".socket"
+  ]),
   properties,
-  match = entry =>
-    entry.name.match(/\.(conf|json|html|txt|service|socket)$/) ? true : false
+  name = "expression"
 ) {
   return {
-    name: "expression",
+    name,
     match,
     transform: async entry => {
       //console.log("TRANSFORM",entry.name);
