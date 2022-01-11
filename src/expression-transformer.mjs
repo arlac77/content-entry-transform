@@ -1,6 +1,5 @@
 import { ReadableStreamContentEntry } from "content-entry";
 import { iterableStringInterceptor } from "iterable-string-interceptor";
-import { nameExtensionMatcher } from "./matcher.mjs";
 
 export const utf8StreamOptions = { encoding: "utf8" };
 
@@ -12,14 +11,7 @@ export function createPropertiesInterceptor(properties) {
 }
 
 export function createExpressionTransformer(
-  match = nameExtensionMatcher([
-    ".conf",
-    ".json",
-    ".html",
-    ".txt",
-    ".service",
-    ".socket"
-  ]),
+  match,
   properties,
   name = "expression"
 ) {
