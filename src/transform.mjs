@@ -1,4 +1,5 @@
 export * from "./properties-transformer.mjs";
+export * from "./expression-transformer.mjs";
 export * from "./matcher.mjs";
 
 /**
