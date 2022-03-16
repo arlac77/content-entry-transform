@@ -27,7 +27,7 @@ transform content entries
 ## createPropertiesTransformer
 
 Creates a new transformer.
-On match the enrtry will be assigned noe properties as given by propertyDefinitions.
+On match the enrtry will be assigned new properties as given by propertyDefinitions.
 
 ### Parameters
 
