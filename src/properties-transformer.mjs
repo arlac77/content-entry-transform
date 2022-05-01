@@ -1,6 +1,6 @@
 /**
  * Creates a new transformer.
- * On match the enrtry will be assigned new properties as given by propertyDefinitions.
+ * On match the entry will be assigned new properties as given by propertyDefinitions.
  * @param {Object} propertyDefinitions
  * @param {Matcher} matcher
  * @return {Transformer}
