@@ -15,7 +15,7 @@ test("property transform", async t => {
 test("property transform deep", async t => {
   const pt = createExpressionTransformer(
     () => true,
-    { a: "{{b}}", b: "{{c}}", c: 3 },
+    { a: "a{{b}}a", b: "b{{c}}b", c: 3 },
     "matcherName"
   );
   const entry = await pt.transform(new StringContentEntry("aName", "X{{a}}Y"));
@@ -23,7 +23,7 @@ test("property transform deep", async t => {
   t.is(pt.name, "matcherName");
 
   t.is(entry.name, "aName");
-  t.is(await entry.string, "X3Y");
+  t.is(await entry.string, "Xab3baY");
 });
 
 test.skip("property transform circular", async t => {
