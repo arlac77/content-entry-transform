@@ -13,10 +13,11 @@ export function createPropertiesInterceptor(properties) {
     leadOut
   ) {
     function ev(e, deepth) {
-      if (deepth > 9)
+      if (deepth > 9) {
         throw new Error(
           `Probably circular reference evaluating: ${expression}`
         );
+      }
       const value = properties[e];
       if (value !== undefined) {
         if (typeof value === "string") {

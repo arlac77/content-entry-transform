@@ -33,12 +33,15 @@ test.skip("property transform circular", async t => {
     "matcherName"
   );
 
-  try {
+ // try {
     const entry = await pt.transform(
       new StringContentEntry("aName", "X{{a}}Y")
     );
+
+    t.is(await entry.string, "Xab3baY");
+
    // t.fail("unreachable");
-  } catch (e) {
+/*  } catch (e) {
     t.is(e.message, "Probably circular reference evaluating: a");
-  }
+  }*/
 });
