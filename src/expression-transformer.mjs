@@ -4,9 +4,31 @@ import { iterableStringInterceptor } from "iterable-string-interceptor";
 export const utf8StreamOptions = { encoding: "utf8" };
 
 export function createPropertiesInterceptor(properties) {
-  return async function* transformer(expression, remainder, source, cb) {
-    const value = properties[expression];
-    yield value === undefined ? "" : value;
+  return async function* transformer(
+    expression,
+    remainder,
+    source,
+    cb,
+    leadIn,
+    leadOut
+  ) {
+    function ev(e, deepth) {
+      if (deepth > 9) throw new Error(`Probably circular reference evaluating: ${expression}`);
+      const value = properties[e];
+      if (value !== undefined) {
+        if (typeof value === "string") {
+          const li = value.indexOf(leadIn);
+          if (li >= 0) {
+            const lo = value.indexOf(leadOut, li + leadIn.length);
+            return ev(value.substring(li + leadIn.length, lo), deepth + 1);
+          }
+        }
+        return value;
+      }
+      return "";
+    }
+
+    yield ev(expression, 0);
   };
 }
 
