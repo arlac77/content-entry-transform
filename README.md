@@ -31,12 +31,12 @@ On match the entry will be assigned new properties as given by propertyDefinitio
 
 ### Parameters
 
-*   `match`  
-*   `propertyDefinitions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `match` &#x20;
+*   `propertyDefinitions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**&#x20;
 *   `name`   (optional, default `"property"`)
-*   `matcher` **Matcher** 
+*   `matcher` **Matcher**&#x20;
 
-Returns **Transformer** 
+Returns **Transformer**&#x20;
 
 ## transform
 
@@ -44,9 +44,9 @@ Apply transformers.
 
 ### Parameters
 
-*   `source` **AsyncIterator\<ContentEntry>** 
+*   `source` **AsyncIterator\<ContentEntry>**&#x20;
 *   `transformers` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<Transformer>**  (optional, default `[]`)
-*   `onlyMatching`  
+*   `onlyMatching` &#x20;
 
 # install
 
