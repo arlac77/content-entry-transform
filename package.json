@@ -26,8 +26,8 @@
     "lint:docs": "documentation lint ./src/**/*.mjs"
   },
   "dependencies": {
-    "content-entry": "^5.2.15",
-    "iterable-string-interceptor": "^2.2.2"
+    "content-entry": "^5.2.16",
+    "iterable-string-interceptor": "^2.2.3"
   },
   "devDependencies": {
     "ava": "^5.1.0",
