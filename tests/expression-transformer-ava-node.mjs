@@ -26,22 +26,22 @@ test("property transform deep", async t => {
   t.is(await entry.string, "Xab34baY");
 });
 
-test.skip("property transform circular", async t => {
+test("property transform circular", async t => {
   const pt = createExpressionTransformer(
     () => true,
     { a: "{{b}}", b: "{{c}}", c: "{{a}}" },
     "matcherName"
   );
 
- // try {
+  try {
     const entry = await pt.transform(
       new StringContentEntry("aName", "X{{a}}Y")
     );
 
     t.is(await entry.string, "Xab3baY");
 
-   // t.fail("unreachable");
-/*  } catch (e) {
+    t.fail("unreachable");
+  } catch (e) {
     t.is(e.message, "Probably circular reference evaluating: a");
-  }*/
+  }
 });
