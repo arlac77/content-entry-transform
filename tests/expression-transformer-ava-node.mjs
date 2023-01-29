@@ -3,8 +3,14 @@ import { StringContentEntry } from "content-entry";
 import { createExpressionTransformer } from "content-entry-transform";
 
 test("property transform", async t => {
-  const pt = createExpressionTransformer(() => true, { a: 1, b: 2 }, "matcherName");
-  const entry = await pt.transform(new StringContentEntry("aName", "X{{a}}Y{{b}}Z"));
+  const pt = createExpressionTransformer(
+    () => true,
+    { a: 1, b: 2 },
+    "matcherName"
+  );
+  const entry = await pt.transform(
+    new StringContentEntry("aName", "X{{a}}Y{{b}}Z")
+  );
 
   t.is(pt.name, "matcherName");
 
@@ -44,4 +50,14 @@ test("property transform circular", async t => {
   } catch (e) {
     t.is(e.message, "Probably circular reference evaluating: a");
   }
+});
+
+test.skip("property transform unbalanced", async t => {
+  const pt = createExpressionTransformer(() => true, {}, "matcherName");
+
+  const entry = await pt.transform(
+    new StringContentEntry("aName", "X{{a open end")
+  );
+
+  t.is(await entry.string, "X{{a open end");
 });
