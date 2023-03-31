@@ -14,7 +14,6 @@ export async function* transform(source, transformers = [], onlyMatching) {
   for await (let entry of source) {
     let didMatch = false;
     for (const t of transformers) {
-      //console.log(t.name, entry.name, t.match(entry));
       if (t.match(entry)) {
         didMatch = true;
         entry = await t.transform(entry);
@@ -22,7 +21,7 @@ export async function* transform(source, transformers = [], onlyMatching) {
       }
     }
 
-    if ((onlyMatching && didMatch) || !onlyMatching) {
+    if (didMatch || !onlyMatching) {
       yield entry;
     }
   }
