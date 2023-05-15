@@ -6,7 +6,7 @@ export * from "./matcher.mjs";
  * Apply transformers.
  * @param {AsyncIterator<ContentEntry>} source
  * @param {Transformer[]} transformers
- * @param {Boolean]} onlyMatching filter out all none matching entries
+ * @param {boolean} onlyMatching filter out all none matching entries
  */
 export async function* transform(source, transformers = [], onlyMatching) {
   const usedTransformers = new Set();
