@@ -19,10 +19,22 @@ transform content entries
 
 ### Table of Contents
 
-*   [createPropertiesTransformer](#createpropertiestransformer)
+*   [createExpressionTransformer](#createexpressiontransformer)
     *   [Parameters](#parameters)
-*   [transform](#transform)
+*   [createPropertiesTransformer](#createpropertiestransformer)
     *   [Parameters](#parameters-1)
+*   [transform](#transform)
+    *   [Parameters](#parameters-2)
+
+## createExpressionTransformer
+
+Transformer expanding '{{}}' expressions
+
+### Parameters
+
+*   `match` **any**&#x20;
+*   `properties` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**&#x20;
+*   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**  (optional, default `"expression"`)
 
 ## createPropertiesTransformer
 
@@ -33,7 +45,7 @@ On match the entry will be assigned new properties as given by propertyDefinitio
 
 *   `match` &#x20;
 *   `propertyDefinitions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**&#x20;
-*   `name`   (optional, default `"property"`)
+*   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**  (optional, default `"property"`)
 *   `matcher` **Matcher**&#x20;
 
 Returns **Transformer**&#x20;
