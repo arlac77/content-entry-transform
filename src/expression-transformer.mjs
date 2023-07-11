@@ -43,6 +43,13 @@ export function createPropertiesInterceptor(properties) {
   };
 }
 
+/**
+ * Transformer expanding '{{}}' expressions
+ * @param {*} match 
+ * @param {Object} properties 
+ * @param {string} name 
+ * @returns 
+ */
 export function createExpressionTransformer(
   match,
   properties,

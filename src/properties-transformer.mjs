@@ -3,6 +3,7 @@
  * On match the entry will be assigned new properties as given by propertyDefinitions.
  * @param {Object} propertyDefinitions
  * @param {Matcher} matcher
+ * @param {string} name
  * @return {Transformer}
  */
 export function createPropertiesTransformer(
