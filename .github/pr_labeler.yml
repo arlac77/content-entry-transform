@@ -21,6 +21,7 @@ deployment:
   - netlify.toml
   - _redirects
 rollup:
+  - rollup.config.js
   - rollup.config.mjs
 vscode:
   - .vscode/*
