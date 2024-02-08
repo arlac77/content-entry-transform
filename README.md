@@ -56,7 +56,7 @@ Apply transformers.
 
 ### Parameters
 
-*   `source` **AsyncIterator\<ContentEntry>**&#x20;
+*   `source` **AsyncIterable\<ContentEntry>**&#x20;
 *   `transformers` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<Transformer>**  (optional, default `[]`)
 *   `onlyMatching` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** filter out all none matching entries
 
