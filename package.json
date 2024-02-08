@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "content-entry": "^6.0.0",
-    "iterable-string-interceptor": "^2.3.0"
+    "iterable-string-interceptor": "^2.3.1"
   },
   "devDependencies": {
     "ava": "^6.1.1",
