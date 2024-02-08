@@ -4,7 +4,7 @@ export * from "./matcher.mjs";
 
 /**
  * Apply transformers.
- * @param {AsyncIterator<ContentEntry>} source
+ * @param {AsyncIterable<ContentEntry>} source
  * @param {Transformer[]} transformers
  * @param {boolean} onlyMatching filter out all none matching entries
  */
