@@ -14,8 +14,11 @@ test("property transform", async t => {
 
   t.is(pt.name, "matcherName");
 
+  console.log(entry);
   t.is(entry.name, "aName");
-  t.is(await entry.string, "X1Y2Z");
+  const string = await entry.string;
+  t.is(typeof string, "string");
+  t.is(string, "X1Y2Z");
 });
 
 test("property transform deep", async t => {

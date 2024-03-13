@@ -45,7 +45,7 @@ export function createPropertiesInterceptor(properties) {
 
 /**
  * Transformer expanding '{{}}' expressions
- * @param {*} match 
+ * @param {string} match 
  * @param {Object} properties 
  * @param {string} name 
  * @returns 
