@@ -2,7 +2,6 @@ import test from "ava";
 import {
   ContentEntry,
   BaseEntry,
-  EmptyContentEntry,
   BufferContentEntry,
   ReadableStreamContentEntry,
   StringContentEntry,
@@ -22,7 +21,6 @@ test("property transform", async t => {
   for (const f of [
     ContentEntry,
     BaseEntry,
-    EmptyContentEntry,
     BufferContentEntry,
     ReadableStreamContentEntry,
     StringContentEntry,
