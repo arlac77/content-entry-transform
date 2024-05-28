@@ -36,7 +36,10 @@ export function createPropertiesInterceptor(properties) {
         }
         return value;
       }
-      return "";
+      else {
+        return leadIn + e + leadOut;
+      }
+   //   return "";
     }
 
     yield ev(expression, 0);
@@ -55,21 +58,29 @@ export function createExpressionTransformer(
   properties,
   name = "expression"
 ) {
+
+  const decoder = new TextDecoder();
+
+  async function * streamToText(stream)
+  {
+    for await (const chunk of stream) {
+      yield decoder.decode(chunk);
+    }
+  }
+
   return {
     name,
     match,
     transform: async entry => {
-      //console.log("TRANSFORM",entry.name);
       const ne = new ReadableStreamContentEntry(
         entry.name,
         iterableStringInterceptor(
-          await entry.getReadStream(utf8StreamOptions),
+          streamToText(await entry.getReadStream()),
           createPropertiesInterceptor(properties)
         )
       );
       ne.destination = entry.destination; // TODO all the other attributes ?
       return ne;
-      //return Object.assign(entry,ne);
     }
   };
 }
