@@ -2,7 +2,7 @@ export * from "./properties-transformer.mjs";
 export * from "./expression-transformer.mjs";
 export * from "./matcher.mjs";
 
-import { ContentEntry} from "content-entry";
+import { ContentEntry } from "content-entry";
 
 /**
  * Apply transformers.
