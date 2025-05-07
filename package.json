@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@types/node": "^22.15.15",
-    "content-entry": "^13.0.7",
+    "content-entry": "^13.1.0",
     "iterable-string-interceptor": "^3.0.2"
   },
   "devDependencies": {
