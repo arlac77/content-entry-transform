@@ -9,7 +9,7 @@ test("property transform", async t => {
     "matcherName"
   );
   const entry = await pt.transform(
-    new StringContentEntry("aName", "X{{a}}Y{{b}}Z")
+    new StringContentEntry("aName", undefined, "X{{a}}Y{{b}}Z")
   );
 
   t.is(pt.name, "matcherName");
@@ -27,7 +27,7 @@ test("property transform deep", async t => {
     { a: "a{{b}}a", b: "b{{c}}{{d}}b", c: 3, d: "4" },
     "matcherName"
   );
-  const entry = await pt.transform(new StringContentEntry("aName", "X{{a}}Y"));
+  const entry = await pt.transform(new StringContentEntry("aName", undefined, "X{{a}}Y"));
 
   t.is(pt.name, "matcherName");
 
@@ -44,7 +44,7 @@ test("property transform circular", async t => {
 
   try {
     const entry = await pt.transform(
-      new StringContentEntry("aName", "X{{a}}Y")
+      new StringContentEntry("aName", undefined, "X{{a}}Y")
     );
 
     t.is(await entry.string, "Xab3baY");
@@ -59,7 +59,7 @@ test.skip("property transform unbalanced", async t => {
   const pt = createExpressionTransformer(() => true, {}, "matcherName");
 
   const entry = await pt.transform(
-    new StringContentEntry("aName", "X{{a open end")
+    new StringContentEntry("aName", undefined, "X{{a open end")
   );
 
   t.is(await entry.string, "X{{a open end");

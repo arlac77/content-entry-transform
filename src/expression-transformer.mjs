@@ -74,6 +74,7 @@ export function createExpressionTransformer(
     transform: async entry => {
       const ne = new ReadableStreamContentEntry(
         entry.name,
+        undefined,
         iterableStringInterceptor(
           streamToText(await entry.getReadStream()),
           createPropertiesInterceptor(properties)

@@ -8,7 +8,7 @@ import {
 
 async function* sources() {
   for (const i of [1, 2, 3, 4]) {
-    yield new StringContentEntry("a" + i, "X{{a}}Y");
+    yield new StringContentEntry("a" + i, undefined, "X{{a}}Y");
   }
 }
 
