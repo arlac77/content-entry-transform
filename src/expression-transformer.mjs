@@ -1,7 +1,5 @@
-import { ReadableStreamContentEntry } from "content-entry";
+import { IteratorContentEntry } from "content-entry";
 import { iterableStringInterceptor } from "iterable-string-interceptor";
-
-export const utf8StreamOptions = { encoding: "utf8" };
 
 export function createPropertiesInterceptor(properties) {
   return async function* transformer(
@@ -72,15 +70,14 @@ export function createExpressionTransformer(
     name,
     match,
     transform: async entry => {
-      const ne = new ReadableStreamContentEntry(
+      const ne = new IteratorContentEntry(
         entry.name,
-        undefined,
+        { destination: entry.destination },
         iterableStringInterceptor(
-          streamToText(await entry.getReadStream()),
+          streamToText(await entry.stream),
           createPropertiesInterceptor(properties)
         )
       );
-      ne.destination = entry.destination; // TODO all the other attributes ?
       return ne;
     }
   };

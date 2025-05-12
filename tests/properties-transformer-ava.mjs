@@ -3,7 +3,7 @@ import {
   ContentEntry,
   BaseEntry,
   BufferContentEntry,
-  ReadableStreamContentEntry,
+  StreamContentEntry,
   StringContentEntry,
   DeletedContentEntry
 } from "content-entry";
@@ -22,7 +22,7 @@ test("property transform", async t => {
     ContentEntry,
     BaseEntry,
     BufferContentEntry,
-    ReadableStreamContentEntry,
+    StreamContentEntry,
     StringContentEntry,
     DeletedContentEntry
   ]) {
