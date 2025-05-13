@@ -33,11 +33,10 @@ export function createPropertiesInterceptor(properties) {
           }
         }
         return value;
-      }
-      else {
+      } else {
         return leadIn + e + leadOut;
       }
-   //   return "";
+      //   return "";
     }
 
     yield ev(expression, 0);
@@ -46,21 +45,19 @@ export function createPropertiesInterceptor(properties) {
 
 /**
  * Transformer expanding '{{}}' expressions
- * @param {string} match 
- * @param {Object} properties 
- * @param {string} name 
- * @returns 
+ * @param {string} match
+ * @param {Object} properties
+ * @param {string} name
+ * @returns
  */
 export function createExpressionTransformer(
   match,
   properties,
   name = "expression"
 ) {
-
   const decoder = new TextDecoder();
 
-  async function * streamToText(stream)
-  {
+  async function* streamToText(stream) {
     for await (const chunk of stream) {
       yield decoder.decode(chunk);
     }
@@ -70,13 +67,15 @@ export function createExpressionTransformer(
     name,
     match,
     transform: async entry => {
+      const stream = await entry.stream;
       const ne = new IteratorContentEntry(
         entry.name,
         { destination: entry.destination },
-        iterableStringInterceptor(
-          streamToText(await entry.stream),
-          createPropertiesInterceptor(properties)
-        )
+        () =>
+          iterableStringInterceptor(
+            streamToText(stream),
+            createPropertiesInterceptor(properties)
+          )
       );
       return ne;
     }
