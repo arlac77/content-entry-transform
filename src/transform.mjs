@@ -20,10 +20,14 @@ export async function* transform(source, transformers = [], onlyMatching) {
         didMatch = true;
         entry = await t.transform(entry);
         usedTransformers.add(t);
+
+        if(!entry) {
+          break;
+        }
       }
     }
 
-    if (didMatch || !onlyMatching) {
+    if (entry && didMatch || !onlyMatching) {
       yield entry;
     }
   }

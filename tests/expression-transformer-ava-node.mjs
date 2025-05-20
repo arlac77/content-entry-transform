@@ -14,7 +14,7 @@ test("property transform", async t => {
 
   t.is(pt.name, "matcherName");
 
-  console.log(entry);
+  //console.log(entry);
   t.is(entry.name, "aName");
   const string = await entry.string;
   t.is(typeof string, "string");
