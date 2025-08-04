@@ -26,7 +26,7 @@
     "lint:docs": "documentation lint ./src**/*.mjs"
   },
   "dependencies": {
-    "content-entry": "^14.2.3",
+    "content-entry": "^14.2.4",
     "iterable-string-interceptor": "^3.0.2"
   },
   "devDependencies": {
