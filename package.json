@@ -27,11 +27,11 @@
     "lint:docs": "documentation lint ./src**/*.mjs"
   },
   "dependencies": {
-    "content-entry": "^14.2.4",
+    "content-entry": "^14.2.5",
     "iterable-string-interceptor": "^3.0.2"
   },
   "devDependencies": {
-    "@types/node": "^24.3.2",
+    "@types/node": "^24.4.1",
     "ava": "^6.4.1",
     "browser-ava": "^2.3.31",
     "c8": "^10.1.3",
