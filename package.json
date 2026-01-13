@@ -28,10 +28,10 @@
   },
   "dependencies": {
     "content-entry": "^14.2.7",
-    "iterable-string-interceptor": "^3.0.3"
+    "iterable-string-interceptor": "^3.0.4"
   },
   "devDependencies": {
-    "@types/node": "^25.0.6",
+    "@types/node": "^25.0.7",
     "ava": "^6.4.1",
     "browser-ava": "^2.3.50",
     "c8": "^10.1.3",
