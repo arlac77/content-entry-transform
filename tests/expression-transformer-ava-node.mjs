@@ -55,12 +55,12 @@ test("property transform circular", async t => {
   }
 });
 
-test.skip("property transform unbalanced", async t => {
+test("property transform unbalanced", async t => {
   const pt = createExpressionTransformer(() => true, {}, "matcherName");
 
   const entry = await pt.transform(
-    new StringContentEntry("aName", undefined, "X{{a open end")
+    new StringContentEntry("aName", undefined, "XYZ{{a open end")
   );
 
-  t.is(await entry.string, "X{{a open end");
+  t.is(await entry.string, "XYZ{{a open end");
 });
