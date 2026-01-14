@@ -12,9 +12,9 @@ export function createPropertiesInterceptor(properties) {
   ) {
     function ev(e, deepth) {
       if (deepth > 9) {
-        throw new Error(
-          `Circular reference evaluating: ${expression}`,{ cause: expression }
-        );
+        throw new Error(`Circular reference evaluating: ${expression}`, {
+          cause: expression
+        });
       }
       let value = properties[e];
       if (value !== undefined) {
@@ -67,6 +67,10 @@ export function createExpressionTransformer(
     name,
     match,
     transform: async entry => {
+      if (entry.isCollection) {
+        return entry;
+      }
+
       const stream = await entry.stream;
       const ne = new IteratorContentEntry(
         entry.name,
