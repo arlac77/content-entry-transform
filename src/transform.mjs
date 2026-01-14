@@ -10,7 +10,7 @@ import { ContentEntry } from "content-entry";
  * @param {Transformer[]} transformers
  * @param {boolean} onlyMatching filter out all none matching entries
  */
-export async function* transform(source, transformers = [], onlyMatching) {
+export async function* transform(source, transformers = [], onlyMatching=false) {
   const usedTransformers = new Set();
 
   for await (let entry of source) {
