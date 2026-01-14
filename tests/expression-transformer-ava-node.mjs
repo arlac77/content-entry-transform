@@ -51,7 +51,7 @@ test("property transform circular", async t => {
 
     t.fail("unreachable");
   } catch (e) {
-    t.is(e.message, "Probably circular reference evaluating: a");
+    t.is(e.message, "Circular reference evaluating: a");
   }
 });
 
