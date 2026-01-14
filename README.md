@@ -57,7 +57,7 @@ Apply transformers.
 
 *   `source` **AsyncIterable\<ContentEntry>**&#x20;
 *   `transformers` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<Transformer>**  (optional, default `[]`)
-*   `onlyMatching` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** filter out all none matching entries
+*   `onlyMatching` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** filter out all none matching entries (optional, default `false`)
 
 # install
 
