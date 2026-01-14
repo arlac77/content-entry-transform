@@ -13,7 +13,7 @@ export function createPropertiesInterceptor(properties) {
     function ev(e, deepth) {
       if (deepth > 9) {
         throw new Error(
-          `Probably circular reference evaluating: ${expression}`
+          `Circular reference evaluating: ${expression}`,{ cause: expression }
         );
       }
       let value = properties[e];
