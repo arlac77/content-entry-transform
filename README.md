@@ -32,7 +32,7 @@ Transformer expanding '{{}}' expressions
 ### Parameters
 
 *   `match` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
-*   `properties` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**&#x20;
+*   `properties` **([Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) | [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function))**&#x20;
 *   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**  (optional, default `"expression"`)
 
 ## createPropertiesTransformer
