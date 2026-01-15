@@ -5,7 +5,7 @@ import { createExpressionTransformer } from "content-entry-transform";
 test("property transform", async t => {
   const pt = createExpressionTransformer(
     () => true,
-    { a: 1, b: 2 },
+    (e) => { return { a: 1, b: 2 }[e]; },
     "matcherName"
   );
   const entry = await pt.transform(

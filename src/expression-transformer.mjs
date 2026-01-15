@@ -1,7 +1,7 @@
 import { IteratorContentEntry } from "content-entry";
 import { iterableStringInterceptor } from "iterable-string-interceptor";
 
-export function createPropertiesInterceptor(properties) {
+export function createPropertiesInterceptor(evaluate) {
   return async function* transformer(
     expression,
     remainder,
@@ -10,13 +10,13 @@ export function createPropertiesInterceptor(properties) {
     leadIn,
     leadOut
   ) {
-    function ev(e, deepth) {
-      if (deepth > 9) {
+    function ev(e, depth) {
+      if (depth > 9) {
         throw new Error(`Circular reference evaluating: ${expression}`, {
           cause: expression
         });
       }
-      let value = properties[e];
+      let value = evaluate(e);
       if (value !== undefined) {
         if (typeof value === "string") {
           while (true) {
@@ -25,7 +25,7 @@ export function createPropertiesInterceptor(properties) {
               const lo = value.indexOf(leadOut, li + leadIn.length);
               value =
                 value.substring(0, li) +
-                ev(value.substring(li + leadIn.length, lo), deepth + 1) +
+                ev(value.substring(li + leadIn.length, lo), depth + 1) +
                 value.substring(lo + leadOut.length);
             } else {
               break;
@@ -46,7 +46,7 @@ export function createPropertiesInterceptor(properties) {
 /**
  * Transformer expanding '{{}}' expressions
  * @param {string} match
- * @param {Object} properties
+ * @param {Object|Function} properties
  * @param {string} name
  * @returns
  */
@@ -63,6 +63,10 @@ export function createExpressionTransformer(
     }
   }
 
+  const interceptor = createPropertiesInterceptor(
+    typeof properties === "function" ? properties : name => properties[name]
+  );
+
   return {
     name,
     match,
@@ -75,11 +79,7 @@ export function createExpressionTransformer(
       const ne = new IteratorContentEntry(
         entry.name,
         { destination: entry.destination },
-        () =>
-          iterableStringInterceptor(
-            streamToText(stream),
-            createPropertiesInterceptor(properties)
-          )
+        () => iterableStringInterceptor(streamToText(stream), interceptor)
       );
       return ne;
     }
