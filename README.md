@@ -18,12 +18,20 @@ transform content entries
 
 ### Table of Contents
 
-*   [createExpressionTransformer](#createexpressiontransformer)
+*   [createPropertiesInterceptor](#createpropertiesinterceptor)
     *   [Parameters](#parameters)
-*   [createPropertiesTransformer](#createpropertiestransformer)
+*   [createExpressionTransformer](#createexpressiontransformer)
     *   [Parameters](#parameters-1)
-*   [transform](#transform)
+*   [createPropertiesTransformer](#createpropertiestransformer)
     *   [Parameters](#parameters-2)
+*   [transform](#transform)
+    *   [Parameters](#parameters-3)
+
+## createPropertiesInterceptor
+
+### Parameters
+
+*   `evaluate` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)**&#x20;
 
 ## createExpressionTransformer
 
