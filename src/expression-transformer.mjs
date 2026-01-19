@@ -21,8 +21,6 @@ export function createPropertiesInterceptor(evaluate) {
         });
       }
       let value = evaluate(e);
-
-      console.log(e, "->", value)
       if (value !== undefined) {
         if (typeof value === "string") {
           while (true) {
