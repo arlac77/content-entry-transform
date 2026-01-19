@@ -1,6 +1,10 @@
 import { IteratorContentEntry } from "content-entry";
 import { iterableStringInterceptor } from "iterable-string-interceptor";
 
+/**
+ * 
+ * @param {Function} evaluate 
+ */
 export function createPropertiesInterceptor(evaluate) {
   return async function* transformer(
     expression,
@@ -17,6 +21,8 @@ export function createPropertiesInterceptor(evaluate) {
         });
       }
       let value = evaluate(e);
+
+      console.log(e, "->", value)
       if (value !== undefined) {
         if (typeof value === "string") {
           while (true) {
@@ -36,7 +42,6 @@ export function createPropertiesInterceptor(evaluate) {
       } else {
         return leadIn + e + leadOut;
       }
-      //   return "";
     }
 
     yield ev(expression, 0);
