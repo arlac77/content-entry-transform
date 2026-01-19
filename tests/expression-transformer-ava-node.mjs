@@ -9,7 +9,7 @@ test("property transform", async t => {
     "matcherName"
   );
   const entry = await pt.transform(
-    new StringContentEntry("aName", undefined, "X{{a}}Y{{b}}Z")
+    new StringContentEntry("aName", undefined, "X{{a}}Y{{b}}{{a}}Z")
   );
 
   t.is(pt.name, "matcherName");
@@ -18,7 +18,7 @@ test("property transform", async t => {
   t.is(entry.name, "aName");
   const string = await entry.string;
   t.is(typeof string, "string");
-  t.is(string, "X1Y2Z");
+  t.is(string, "X1Y21Z");
 });
 
 test("property transform deep", async t => {
@@ -27,12 +27,12 @@ test("property transform deep", async t => {
     { a: "a{{b}}a", b: "b{{c}}{{d}}b", c: 3, d: "4" },
     "matcherName"
   );
-  const entry = await pt.transform(new StringContentEntry("aName", undefined, "X{{a}}Y"));
+  const entry = await pt.transform(new StringContentEntry("aName", undefined, "X{{a}}{{d}}Y"));
 
   t.is(pt.name, "matcherName");
 
   t.is(entry.name, "aName");
-  t.is(await entry.string, "Xab34baY");
+  t.is(await entry.string, "Xab34ba4Y");
 });
 
 test("property transform circular", async t => {
