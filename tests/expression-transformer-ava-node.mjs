@@ -21,6 +21,25 @@ test("property transform", async t => {
   t.is(string, "X1Y21Z");
 });
 
+test.skip("property transform none string result", async t => {
+  const pt = createExpressionTransformer(
+    () => true,
+    (e) => { return { a: 1, b: [] }[e]; },
+    "matcherName"
+  );
+  const entry = await pt.transform(
+    new StringContentEntry("aName", undefined, "X{{a}}Y{{b}}{{a}}Z")
+  );
+
+  t.is(pt.name, "matcherName");
+
+  //console.log(entry);
+  t.is(entry.name, "aName");
+  const string = await entry.string;
+  t.is(typeof string, "string");
+  t.is(string, "X1Y21Z");
+});
+
 test("property transform deep", async t => {
   const pt = createExpressionTransformer(
     () => true,
