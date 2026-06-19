@@ -31,7 +31,7 @@
     "iterable-string-interceptor": "^3.0.8"
   },
   "devDependencies": {
-    "@types/node": "^25.9.3",
+    "@types/node": "^26.0.0",
     "ava": "^8.0.1",
     "browser-ava": "^2.3.62",
     "c8": "^11.0.0",
