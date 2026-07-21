@@ -2,8 +2,8 @@ import { IteratorContentEntry } from "content-entry";
 import { iterableStringInterceptor } from "iterable-string-interceptor";
 
 /**
- * 
- * @param {Function} evaluate 
+ *
+ * @param {Function} evaluate
  */
 export function createPropertiesInterceptor(evaluate) {
   return async function* transformer(
@@ -70,6 +70,10 @@ export function createExpressionTransformer(
     typeof properties === "function" ? properties : name => properties[name]
   );
 
+  function* iter(value) {
+    yield value;
+  }
+
   return {
     name,
     match,
@@ -78,11 +82,21 @@ export function createExpressionTransformer(
         return entry;
       }
 
+      const name = (
+        await Array.fromAsync(
+          iterableStringInterceptor(iter(entry.name), interceptor)
+        )
+      ).join("");
+      const destination = entry.destination
+        ? (
+            await Array.fromAsync(
+              iterableStringInterceptor(iter(entry.destination), interceptor)
+            )
+          ).join("")
+        : undefined;
       const stream = await entry.stream;
-      const ne = new IteratorContentEntry(
-        entry.name,
-        { destination: entry.destination },
-        () => iterableStringInterceptor(streamToText(stream), interceptor)
+      const ne = new IteratorContentEntry(name, { destination }, () =>
+        iterableStringInterceptor(streamToText(stream), interceptor)
       );
       return ne;
     }
