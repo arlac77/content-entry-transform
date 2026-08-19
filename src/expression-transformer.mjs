@@ -1,4 +1,4 @@
-import { IteratorContentEntry } from "content-entry";
+import { IteratorContentEntry, CollectionEntry } from "content-entry";
 import { iterableStringInterceptor } from "iterable-string-interceptor";
 
 /**
@@ -78,15 +78,19 @@ export function createExpressionTransformer(
     name,
     match,
     transform: async entry => {
-      if (entry.isCollection) {
-        return entry;
-      }
-
       const name = (
         await Array.fromAsync(
           iterableStringInterceptor(iter(entry.name), interceptor)
         )
       ).join("");
+
+      if (entry.isCollection) {
+        if(name !== entry.name) {
+          return new CollectionEntry(name);
+        }
+        return entry;
+      }
+
       const destination = entry.destination
         ? (
             await Array.fromAsync(
