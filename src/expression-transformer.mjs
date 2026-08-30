@@ -84,13 +84,6 @@ export function createExpressionTransformer(
         )
       ).join("");
 
-      if (entry.isCollection) {
-        if(name !== entry.name) {
-          return new CollectionEntry(name);
-        }
-        return entry;
-      }
-
       const destination = entry.destination
         ? (
             await Array.fromAsync(
@@ -98,8 +91,18 @@ export function createExpressionTransformer(
             )
           ).join("")
         : undefined;
+
+      const options = { destination, mode: await entry.mode };
+
+      if (entry.isCollection) {
+        if (name !== entry.name) {
+          return new CollectionEntry(name, options);
+        }
+        return entry;
+      }
+
       const stream = await entry.stream;
-      const ne = new IteratorContentEntry(name, { destination }, () =>
+      const ne = new IteratorContentEntry(name, options, () =>
         iterableStringInterceptor(streamToText(stream), interceptor)
       );
       return ne;
