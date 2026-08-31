@@ -92,7 +92,12 @@ export function createExpressionTransformer(
           ).join("")
         : undefined;
 
-      const options = { destination, mode: await entry.mode };
+      const options = {
+        destination,
+        mode: await entry.mode,
+        user: entry.user,
+        group: entry.group
+      };
 
       if (entry.isCollection) {
         if (name !== entry.name) {
