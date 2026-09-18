@@ -95,7 +95,7 @@ export function createExpressionTransformer(
       const options = {
         destination,
         mode: await entry.mode,
-        user: entry.user,
+        owner: entry.owner,
         group: entry.group
       };
 
