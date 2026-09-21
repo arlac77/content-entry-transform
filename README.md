@@ -18,7 +18,7 @@ transform content entries
 
 ### Table of Contents
 
-*   [createPropertiesInterceptor](#createpropertiesinterceptor)
+*   [createExpressionInterceptor](#createexpressioninterceptor)
     *   [Parameters](#parameters)
 *   [createExpressionTransformer](#createexpressiontransformer)
     *   [Parameters](#parameters-1)
@@ -27,7 +27,7 @@ transform content entries
 *   [transform](#transform)
     *   [Parameters](#parameters-3)
 
-## createPropertiesInterceptor
+## createExpressionInterceptor
 
 ### Parameters
 
