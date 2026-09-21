@@ -5,7 +5,7 @@ import { iterableStringInterceptor } from "iterable-string-interceptor";
  *
  * @param {Function} evaluate
  */
-export function createPropertiesInterceptor(evaluate) {
+export function createExpressionInterceptor(evaluate) {
   return async function* transformer(
     expression,
     remainder,
@@ -66,7 +66,7 @@ export function createExpressionTransformer(
     }
   }
 
-  const interceptor = createPropertiesInterceptor(
+  const interceptor = createExpressionInterceptor(
     typeof properties === "function" ? properties : name => properties[name]
   );
 
