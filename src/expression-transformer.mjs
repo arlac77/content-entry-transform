@@ -21,8 +21,11 @@ export function createExpressionInterceptor(evaluate) {
         });
       }
       let value = evaluate(e);
-      if (value !== undefined) {
-        if (typeof value === "string") {
+      switch (typeof value) {
+        case "undefined":
+          return leadIn + e + leadOut;
+
+        case "string":
           while (true) {
             const li = value.indexOf(leadIn);
             if (li >= 0) {
@@ -35,10 +38,9 @@ export function createExpressionInterceptor(evaluate) {
               break;
             }
           }
-        }
-        return value;
-      } else {
-        return leadIn + e + leadOut;
+
+        default:
+          return value;
       }
     }
 
