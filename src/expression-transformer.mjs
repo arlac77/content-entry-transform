@@ -48,6 +48,16 @@ export function createExpressionInterceptor(evaluate) {
   };
 }
 
+async function expand(value, interceptor) {
+  function* iter(value) {
+    yield value;
+  }
+
+  return (
+    await Array.fromAsync(iterableStringInterceptor(iter(value), interceptor))
+  ).join("");
+}
+
 /**
  * Transformer expanding '{{}}' expressions
  * @param {string} match
@@ -72,26 +82,13 @@ export function createExpressionTransformer(
     typeof properties === "function" ? properties : name => properties[name]
   );
 
-  function* iter(value) {
-    yield value;
-  }
-
   return {
     name,
     match,
     transform: async entry => {
-      const name = (
-        await Array.fromAsync(
-          iterableStringInterceptor(iter(entry.name), interceptor)
-        )
-      ).join("");
-
+      const name = await expand(entry.name, interceptor);
       const destination = entry.destination
-        ? (
-            await Array.fromAsync(
-              iterableStringInterceptor(iter(entry.destination), interceptor)
-            )
-          ).join("")
+        ? await expand(entry.destination, interceptor)
         : undefined;
 
       const options = {
